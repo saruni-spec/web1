@@ -5,6 +5,9 @@ from django.http import HttpResponseRedirect
 
 # Create your views here.
 
+class NewTaskForm(forms.Form):
+    task = forms.CharField(label="New Task")
+
 # Add a new task:
 def index(request):
 
@@ -18,9 +21,6 @@ def index(request):
     return render(request, "tasks/index.html", {
         "tasks": request.session["tasks"]
     })
-
-class NewTaskForm(forms.Form):
-    task = forms.CharField(label="New Task")
 
 def add(request):
     # Check if method is POST
